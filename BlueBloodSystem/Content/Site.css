@@ -36,14 +36,34 @@ textarea {
 }
 
 .navbar-inverse {
-  background-color: #428bca;
-  border-color: #428bca;
+    background-color: #428bca;
+    border-color: #428bca;
 }
 
-.navbar-inverse .navbar-brand {
-  color: #ffffff;
+    .navbar-inverse .navbar-brand {
+        color: #ffffff;
+    }
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #ffffff;
+    }
+
+    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover {
+        background-color: #428bca;
+    }
+
+body {
+    color: #428bca;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-  color: #ffffff;
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffffff;
+    background-color: #428bca;
 }

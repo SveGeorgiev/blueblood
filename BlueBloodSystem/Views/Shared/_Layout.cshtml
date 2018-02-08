@@ -23,7 +23,18 @@
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>*@
-                    <li>@Html.ActionLink("2018", "Index", "Transactions", new { area = "" }, null)</li>
+                   @* <li>@Html.ActionLink("2018", "Index", "Transactions", new { area = "" }, null)</li>*@
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            2018
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Януари", "Index", "Transactions", new { month = 1 }, null)</li>
+                            <li>@Html.ActionLink("Февруари", "Index", "Transactions", new { month = 2 }, null)</li>
+                            <li>@Html.ActionLink("Март", "Index", "Transactions", new { month = 3 }, null)</li>
+                        </ul>
+                    </li>
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@
             </div>

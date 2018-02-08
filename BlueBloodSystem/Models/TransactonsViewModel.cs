@@ -8,5 +8,6 @@ namespace BlueBloodSystem.Models
         public decimal Incoming { get; set; }
         public decimal Outgoin { get; set; }
         public decimal Total { get; set; }
+        public string Month { get; set; }
     }
 }
