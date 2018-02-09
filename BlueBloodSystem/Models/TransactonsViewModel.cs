@@ -9,5 +9,6 @@ namespace BlueBloodSystem.Models
         public decimal Outgoin { get; set; }
         public decimal Total { get; set; }
         public string Month { get; set; }
+        public int Year { get; set; }
     }
 }

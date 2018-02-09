@@ -11,13 +11,15 @@ namespace BlueBloodSystem.Controllers
     {
         public TransactionService TransactionService => new TransactionService();
 
-        public ActionResult Index(int? month)
+        public ActionResult Index(int? month, int? year)
         {
             List<Transaction> transactions = TransactionService.GetTransactions();
             string monthName = string.Empty;
-            int currentMoth = month.HasValue ? month.Value : DateTime.Now.Month;
+            int chosenMonth = month.HasValue ? month.Value : DateTime.Now.Month;
+            int chosenYear = year.HasValue ? year.Value : DateTime.Now.Year;
+            transactions = transactions.Where(t => t.Date.Month == chosenMonth && t.Date.Year == chosenYear).ToList();
 
-            switch (currentMoth)
+            switch (chosenMonth)
             {
                 case 1:
                     monthName = "Януари";
@@ -64,7 +66,8 @@ namespace BlueBloodSystem.Controllers
                 Transactions = transactions,
                 Incoming = transactions.Where(t => t.IsDividend).Sum(x => x.Value),
                 Outgoin = transactions.Where(t => !t.IsDividend).Sum(x => x.Value),
-                Month = monthName
+                Month = monthName,
+                Year = chosenYear
             };
             data.Total = data.Incoming - data.Outgoin;
 
@@ -78,7 +81,13 @@ namespace BlueBloodSystem.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var transaction = new Transaction
+            {
+                Date = DateTime.Today,
+                Value = 20,
+                IsDividend = true
+            };
+            return View(transaction);
         }
 
         [HttpPost]

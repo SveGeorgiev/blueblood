@@ -4,57 +4,56 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Месец Февруари</h2>
+<h2>Месец @Model.Month @Model.Year</h2>
 
-<p>
-    @Html.ActionLink("Добави", "Create", null, new { @class = "btn btn-primary" })
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Име")
-        </th>
-        <th>
-            @Html.DisplayName("Дата")
-        </th>
-        <th>
-            @Html.DisplayName("Стойност")
-        </th>
-        <th>
-            @Html.DisplayName("Приход/Разход")
-        </th>
-        <th></th>
-        <th></th>
-    </tr>
+<div id="transactions-wrapper">
+    <p class="admin">
+        @Html.ActionLink("Добави", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Име")
+            </th>
+            <th>
+                @Html.DisplayName("Дата")
+            </th>
+            <th>
+                @Html.DisplayName("Стойност")
+            </th>
+            <th>
+                @Html.DisplayName("Приход/Разход")
+            </th>
+            <th class="admin"></th>
+            <th class="admin"></th>
+        </tr>
 
-    @if (Model != null)
-    {
-        foreach (var item in Model.Transactions)
+        @if (Model != null)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Value)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDividend)
-                </td>
-                <td>
-                    @Html.ActionLink("Редакция", "Edit", new { id = item.Id })
-                    @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-
-                </td>
-                <td>@Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</td>
-            </tr>
+            foreach (var item in Model.Transactions)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Value)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsDividend)
+                    </td>
+                    <td class="admin">@Html.ActionLink("Редакция", "Edit", new { id = item.Id })</td>
+                    <td class="admin">@Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</td>
+                </tr>
+            }
         }
-    }
-</table>
+    </table>
 
-<p><b>Приходи:</b> @Model.Incoming</p>
-<p><b>Разходи:</b> @Model.Outgoin</p>
-<p><b>Тотал:</b> @Model.Total</p>
+    <p><b>Приходи:</b> @Model.Incoming</p>
+    <p><b>Разходи:</b> @Model.Outgoin</p>
+    <p><b>Тотал:</b> @Model.Total</p>
+</div>
+<script src="~/Scripts/app/transaction-index.js"></script>
