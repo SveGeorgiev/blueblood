@@ -6,11 +6,10 @@
 
 <h2>Редакция</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         @*<h4>Transaction</h4>*@
         <hr />
@@ -59,6 +58,12 @@
         </div>
     </div>
 }
+
+<script>
+    $(document).ready(function () {
+        $('#Date').datepicker({ dateFormat: 'dd.mm.yy' });
+    });
+</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

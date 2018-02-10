@@ -51,8 +51,14 @@
         }
     </table>
 
-    <p><b>Приходи:</b> @Model.Incoming</p>
-    <p><b>Разходи:</b> @Model.Outgoin</p>
-    <p><b>Тотал:</b> @Model.Total</p>
+    <div class="alert alert-success" role="alert">
+        <strong>Приходи:</strong> @Model.Incoming
+    </div>
+    <div class="alert alert-danger" role="alert">
+        <strong>Разходи:</strong> @Model.Outgoin
+    </div>
+    <div class="alert alert-info" role="alert">
+        <strong>Тотал:</strong> @Model.Total
+    </div>
 </div>
 <script src="~/Scripts/app/transaction-index.js"></script>

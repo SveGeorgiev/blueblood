@@ -7,46 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Синя Кръв Асеновград", "Index", "Transactions", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            2018
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Януари", "Index", "Transactions", new { month = 1, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Февруари", "Index", "Transactions", new { month = 2, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Март", "Index", "Transactions", new { month = 3, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Април", "Index", "Transactions", new { month = 4, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Май", "Index", "Transactions", new { month = 5, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Юни", "Index", "Transactions", new { month = 6, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Юли", "Index", "Transactions", new { month = 7, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Август", "Index", "Transactions", new { month = 8, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Септември", "Index", "Transactions", new { month = 9, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Октомври", "Index", "Transactions", new { month = 10, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Ноември", "Index", "Transactions", new { month = 11, year = 2018 }, null)</li>
-                            <li>@Html.ActionLink("Декември", "Index", "Transactions", new { month = 12, year = 2018 }, null)</li>
-                        </ul>
-                    </li>
-                    <li>@Html.ActionLink("Анкети", "Index", "Poll")</li>
-                </ul>
-                @*@Html.Partial("_LoginPartial")*@
-            </div>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @Html.ActionLink("Синя Кръв Асеновград", "Index", "Transactions", new { area = "" }, new { @class = "navbar-brand" })
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        2018
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @Html.ActionLink("Януари", "Index", "Transactions", new { month = 1, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Февруари", "Index", "Transactions", new { month = 2, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Март", "Index", "Transactions", new { month = 3, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Април", "Index", "Transactions", new { month = 4, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Май", "Index", "Transactions", new { month = 5, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Юни", "Index", "Transactions", new { month = 6, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Юли", "Index", "Transactions", new { month = 7, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Август", "Index", "Transactions", new { month = 8, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Септември", "Index", "Transactions", new { month = 9, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Октомври", "Index", "Transactions", new { month = 10, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Ноември", "Index", "Transactions", new { month = 11, year = 2018 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Декември", "Index", "Transactions", new { month = 12, year = 2018 }, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Анкети", "Index", "Poll", null, new { @class = "nav-link" })
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         @RenderSection("SPAViews", required: false)
@@ -56,7 +52,7 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("Scripts", required: false)
 </body>
