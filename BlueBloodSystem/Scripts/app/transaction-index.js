@@ -25,7 +25,7 @@
             }
         } else {
             document.getElementById("transactions-wrapper").style.display = 'block';
-            if (sessionStorage.getItem('isAdmin') !== null || sessionStorage.getItem('isAdmin') === "true") {
+            if (sessionStorage.getItem('isAdmin') !== null && sessionStorage.getItem('isAdmin') === "true") {
                 var adminElements = document.getElementsByClassName("admin");
                 for (var i = 0; i < adminElements.length; i++) {
                     adminElements[i].style.display = 'inline-block';

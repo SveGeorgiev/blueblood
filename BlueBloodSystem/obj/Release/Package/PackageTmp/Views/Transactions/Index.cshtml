@@ -4,9 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Месец @Model.Month @Model.Year</h2>
-
 <div id="transactions-wrapper">
+    <h2>Месец @Model.Month @Model.Year</h2>
     <p class="admin">
         @Html.ActionLink("Добави", "Create", null, new { @class = "btn btn-primary" })
     </p>

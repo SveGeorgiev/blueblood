@@ -176,3 +176,4 @@ C:\Projects\blueblood\BlueBloodSystem\bin\System.Web.WebPages.Deployment.xml
 C:\Projects\blueblood\BlueBloodSystem\bin\System.Web.WebPages.Razor.xml
 C:\Projects\blueblood\BlueBloodSystem\obj\Debug\BlueBloodSystem.dll
 C:\Projects\blueblood\BlueBloodSystem\obj\Debug\BlueBloodSystem.pdb
+C:\Projects\blueblood\BlueBloodSystem\obj\Debug\BlueBloodSystem.csprojResolveAssemblyReference.cache
