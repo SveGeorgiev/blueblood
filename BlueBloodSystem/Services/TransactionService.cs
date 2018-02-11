@@ -18,7 +18,7 @@ namespace BlueBloodSystem.Services
 
         public List<Transaction> GetTransactions()
         {
-            return JCS.GetAllTransactions(budgetFileName).OrderBy(t => t.Date).ToList();
+            return JCS.GetAllTransactions(budgetFileName).ToList();
         }
 
         public Transaction GetTransactionById(Guid Id)

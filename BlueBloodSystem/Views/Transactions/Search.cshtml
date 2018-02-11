@@ -1,0 +1,89 @@
+﻿@model IEnumerable<BlueBloodSystem.Models.Transaction>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2></h2>
+
+<div id="search-wrapper">
+    @using (Html.BeginForm("Search", "Transactions"))
+    {
+        <div class="input-group mb-3">
+            <input id="transactionName" name="transactionName" type="text" class="form-control" placeholder="Име" aria-label="Име" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Ok</button>
+            </div>
+        </div>
+    }
+
+    @if (Model != null)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Value)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsDividend)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Value)лв.
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsDividend)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+        <div class="alert alert-success" role="alert">
+            <strong>Обща сума: </strong> <i>@ViewData["totalAmount"]</i>лв.
+        </div>
+    }
+</div>
+
+<div class="modal fade" id="keyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Синя Кръв Асеновград</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Моля въведете парола:</label>
+                        <input type="password" class="form-control" id="userKey">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="sendUserKey()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/app/app-key.js"></script>

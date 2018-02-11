@@ -2,7 +2,7 @@
     (function askCheckPassword() {
         if ((sessionStorage.getItem('isAuthenticated') === null || sessionStorage.getItem('isAuthenticated') === "false")
             && (sessionStorage.getItem('isAdmin') === null || sessionStorage.getItem('isAdmin') === "false")) {
-            var password = prompt("Моля въвдете парола", "");
+            var password = prompt("Моля въвдете парола:", "");
             if (password !== null && password === "8814") {
                 sessionStorage.setItem('isAuthenticated', true);
                 document.getElementById("transactions-wrapper").style.display = 'block';

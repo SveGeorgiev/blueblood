@@ -12,16 +12,16 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayName("Име")
+                @Html.ActionLink("Име", "Index", new { sortBy = "Name" })
             </th>
             <th>
-                @Html.DisplayName("Дата")
+                @Html.ActionLink("Дата", "Index", new { sortBy = "Date" })
             </th>
             <th>
-                @Html.DisplayName("Стойност")
+                @Html.ActionLink("Стойност", "Index", new { sortBy = "Value" })
             </th>
             <th>
-                @Html.DisplayName("Приход/Разход")
+                @Html.ActionLink("Приход/Разход", "Index", new { sortBy = "IsDividend" })
             </th>
             <th class="admin"></th>
             <th class="admin"></th>
@@ -39,7 +39,7 @@
                         @Html.DisplayFor(modelItem => item.Date)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Value)
+                        @Html.DisplayFor(modelItem => item.Value)лв.
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.IsDividend)
@@ -52,13 +52,38 @@
     </table>
 
     <div class="alert alert-success" role="alert">
-        <strong>Приходи:</strong> @Model.Incoming
+        <strong>Приходи:</strong> <i>@Model.Incoming</i>лв.
     </div>
     <div class="alert alert-danger" role="alert">
-        <strong>Разходи:</strong> @Model.Outgoin
+        <strong>Разходи:</strong> <i>@Model.Outgoin</i>лв.
     </div>
     <div class="alert alert-info" role="alert">
-        <strong>Тотал:</strong> @Model.Total
+        <strong>Тотал:</strong> <i>@Model.Total</i>лв.
     </div>
 </div>
-<script src="~/Scripts/app/transaction-index.js"></script>
+
+<div class="modal fade" id="keyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Синя Кръв Асеновград</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Моля въведете парола:</label>
+                        <input type="password" class="form-control" id="userKey">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="sendUserKey()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/app/app-key.js"></script>
