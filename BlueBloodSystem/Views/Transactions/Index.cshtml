@@ -5,23 +5,23 @@
 }
 
 <div id="transactions-wrapper">
-    <h2>Месец @Model.Month @Model.Year</h2>
+    <h2>Месец @Model.MonthName @Model.Year</h2>
     <p class="admin">
         @Html.ActionLink("Добави", "Create", null, new { @class = "btn btn-primary" })
     </p>
     <table class="table">
         <tr>
             <th>
-                @Html.ActionLink("Име", "Index", new { sortBy = "Name" })
+                @Html.ActionLink("Име", "Index", new { sortBy = "Name", year = Model.Year, month = Model.Month })
             </th>
             <th>
-                @Html.ActionLink("Дата", "Index", new { sortBy = "Date" })
+                @Html.ActionLink("Дата", "Index", new { sortBy = "Date", year = Model.Year, month = Model.Month })
             </th>
             <th>
-                @Html.ActionLink("Стойност", "Index", new { sortBy = "Value" })
+                @Html.ActionLink("Стойност", "Index", new { sortBy = "Value", year = Model.Year, month = Model.Month })
             </th>
             <th>
-                @Html.ActionLink("Приход/Разход", "Index", new { sortBy = "IsDividend" })
+                @Html.ActionLink("Приход/Разход", "Index", new { sortBy = "IsDividend", year = Model.Year, month = Model.Month })
             </th>
             <th class="admin"></th>
             <th class="admin"></th>

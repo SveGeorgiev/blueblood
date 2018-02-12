@@ -25,8 +25,9 @@ namespace BlueBloodSystem.Controllers
                 Transactions = transactions,
                 Incoming = transactions.Where(t => t.IsDividend).Sum(x => x.Value),
                 Outgoin = transactions.Where(t => !t.IsDividend).Sum(x => x.Value),
-                Month = monthName,
-                Year = chosenYear
+                MonthName = monthName,
+                Year = chosenYear,
+                Month = chosenMonth
             };
             data.Total = data.Incoming - data.Outgoin;
 
