@@ -164,7 +164,7 @@ namespace BlueBloodSystem.Controllers
         {
             if (sortBy == null || sortBy == "Date")
             {
-                return transactions.OrderBy(t => t.Date).ToList();
+                return transactions.OrderBy(t => t.Date).ThenBy(t => t.Name).ToList();
             }
             else if (sortBy == "Name")
             {
@@ -172,11 +172,11 @@ namespace BlueBloodSystem.Controllers
             }
             else if (sortBy == "Value")
             {
-                return transactions.OrderByDescending(t => t.Value).ToList();
+                return transactions.OrderByDescending(t => t.Value).ThenBy(t => t.Name).ToList();
             }
             else if (sortBy == "IsDividend")
             {
-                return transactions.OrderByDescending(t => t.IsDividend).ThenByDescending(t => t.Value).ToList();
+                return transactions.OrderByDescending(t => t.IsDividend).ThenByDescending(t => t.Value).ThenBy(t => t.Name).ToList();
             }
 
             return transactions;
