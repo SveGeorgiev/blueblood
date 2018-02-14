@@ -19,17 +19,21 @@ namespace BlueBloodSystem.Controllers
             transactions = transactions.Where(t => t.Date.Month == chosenMonth && t.Date.Year == chosenYear).ToList();
             transactions = SortTransactions(transactions, sortBy);
             string monthName = SetMonthName(chosenMonth);
+            var incoming = transactions.Where(t => t.IsDividend);
+            var outgoing = transactions.Where(t => !t.IsDividend);
 
             var data = new TransactonsViewModel
             {
                 Transactions = transactions,
-                Incoming = transactions.Where(t => t.IsDividend).Sum(x => x.Value),
-                Outgoin = transactions.Where(t => !t.IsDividend).Sum(x => x.Value),
+                Incoming = incoming,
+                Outgoing = outgoing,
+                IncomingSum = incoming.Sum(x => x.Value),
+                OutgoingSum = outgoing.Sum(x => x.Value),
                 MonthName = monthName,
                 Year = chosenYear,
                 Month = chosenMonth
             };
-            data.Total = data.Incoming - data.Outgoin;
+            data.Total = data.IncomingSum - data.OutgoingSum;
 
             return View(data);
         }
@@ -120,8 +124,20 @@ namespace BlueBloodSystem.Controllers
             {
                 List<Transaction> transactions = TransactionService.GetTransactions();
                 transactions = transactions.Where(t => t.Name.ToLower().Contains(transactionName.ToLower())).OrderBy(t => t.Date).ToList();
-                ViewData["totalAmount"] = transactions.Sum(t => t.Value).ToString();
-                return View(transactions);
+                var incoming = transactions.Where(t => t.IsDividend);
+                var outgoing = transactions.Where(t => !t.IsDividend);
+                var incomingSum = incoming.Sum(t => t.Value);
+                var outgoingSum = outgoing.Sum(t => t.Value);
+                var totalSum = incomingSum - outgoingSum;
+
+                return View(new TransactonsViewModel
+                {
+                    Incoming = incoming,
+                    Outgoing = outgoing,
+                    IncomingSum = incomingSum,
+                    OutgoingSum = outgoingSum,
+                    Total = totalSum
+                });
             }
 
             return View();

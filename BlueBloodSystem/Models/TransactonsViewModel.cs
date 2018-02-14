@@ -5,8 +5,10 @@ namespace BlueBloodSystem.Models
     public class TransactonsViewModel
     {
         public List<Transaction> Transactions { get; set; }
-        public decimal Incoming { get; set; }
-        public decimal Outgoin { get; set; }
+        public IEnumerable<Transaction> Incoming { get; set; }
+        public IEnumerable<Transaction> Outgoing { get; set; }
+        public decimal IncomingSum { get; set; }
+        public decimal OutgoingSum { get; set; }
         public decimal Total { get; set; }
         public string MonthName { get; set; }
         public int Year { get; set; }

@@ -9,27 +9,30 @@
     <p class="admin">
         @Html.ActionLink("Добави", "Create", null, new { @class = "btn btn-primary" })
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.ActionLink("Име", "Index", new { sortBy = "Name", year = Model.Year, month = Model.Month })
-            </th>
-            <th>
-                @Html.ActionLink("Дата", "Index", new { sortBy = "Date", year = Model.Year, month = Model.Month })
-            </th>
-            <th>
-                @Html.ActionLink("Стойност", "Index", new { sortBy = "Value", year = Model.Year, month = Model.Month })
-            </th>
-            <th>
-                @Html.ActionLink("Приход/Разход", "Index", new { sortBy = "IsDividend", year = Model.Year, month = Model.Month })
-            </th>
-            <th class="admin"></th>
-            <th class="admin"></th>
-        </tr>
 
-        @if (Model != null)
-        {
-            foreach (var item in Model.Transactions)
+
+    @if (Model != null && Model.Incoming.Count() > 0)
+    {
+        <h4>Приходи</h4>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink("Име", "Index", new { sortBy = "Name", year = Model.Year, month = Model.Month })
+                </th>
+                <th>
+                    @Html.ActionLink("Дата", "Index", new { sortBy = "Date", year = Model.Year, month = Model.Month })
+                </th>
+                <th>
+                    @Html.ActionLink("Стойност", "Index", new { sortBy = "Value", year = Model.Year, month = Model.Month })
+                </th>
+                @*<th>
+                    @Html.ActionLink("Приход/Разход", "Index", new { sortBy = "IsDividend", year = Model.Year, month = Model.Month })
+                </th>*@
+                <th class="admin"></th>
+                <th class="admin"></th>
+            </tr>
+
+            @foreach (var item in Model.Incoming)
             {
                 <tr>
                     <td>
@@ -41,21 +44,68 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Value)лв.
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.IsDividend)
-                    </td>
+                    </td>*@
                     <td class="admin">@Html.ActionLink("Редакция", "Edit", new { id = item.Id })</td>
                     <td class="admin">@Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</td>
                 </tr>
             }
-        }
-    </table>
+
+        </table>
+    }
+
+    @if (Model != null && Model.Outgoing.Count() > 0)
+    {
+        <h4>Разходи</h4>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink("Име", "Index", new { sortBy = "Name", year = Model.Year, month = Model.Month })
+                </th>
+                <th>
+                    @Html.ActionLink("Дата", "Index", new { sortBy = "Date", year = Model.Year, month = Model.Month })
+                </th>
+                <th>
+                    @Html.ActionLink("Стойност", "Index", new { sortBy = "Value", year = Model.Year, month = Model.Month })
+                </th>
+                @*<th>
+                        @Html.ActionLink("Приход/Разход", "Index", new { sortBy = "IsDividend", year = Model.Year, month = Model.Month })
+                    </th>*@
+                <th class="admin"></th>
+                <th class="admin"></th>
+            </tr>
+
+            @if (Model != null)
+            {
+                foreach (var item in Model.Outgoing)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Value)лв.
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.IsDividend)
+                            </td>*@
+                        <td class="admin">@Html.ActionLink("Редакция", "Edit", new { id = item.Id })</td>
+                        <td class="admin">@Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</td>
+                    </tr>
+                }
+            }
+        </table>
+    }
 
     <div class="alert alert-success" role="alert">
-        <strong>Приходи:</strong> <i>@Model.Incoming</i>лв.
+        <strong>Приходи:</strong> <i>@Model.IncomingSum</i>лв.
     </div>
     <div class="alert alert-danger" role="alert">
-        <strong>Разходи:</strong> <i>@Model.Outgoin</i>лв.
+        <strong>Разходи:</strong> <i>@Model.OutgoingSum</i>лв.
     </div>
     <div class="alert alert-info" role="alert">
         <strong>Тотал:</strong> <i>@Model.Total</i>лв.
