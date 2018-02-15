@@ -31,5 +31,7 @@ namespace BlueBloodSystem.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<BlueBloodSystem.Models.Transaction> Transactions { get; set; }
     }
 }

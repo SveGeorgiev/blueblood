@@ -2,22 +2,27 @@
 using BlueBloodSystem.Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace BlueBloodSystem.Controllers
 {
-    public class TransactionsController : Controller
+    public class TransactionController : Controller
     {
-        public TransactionJsonService TransactionService => new TransactionJsonService();
+        private TransactionService transactionService = new TransactionService();
 
-        public ActionResult Index(int? month, int? year, string sortBy)
+        // GET: Transaction
+        public async Task<ActionResult> Index(int? month, int? year, string sortBy)
         {
-            List<Transaction> transactions = TransactionService.GetTransactions();
             int chosenMonth = month.HasValue ? month.Value : DateTime.Now.Month;
             int chosenYear = year.HasValue ? year.Value : DateTime.Now.Year;
-            transactions = transactions.Where(t => t.Date.Month == chosenMonth && t.Date.Year == chosenYear).ToList();
+
+            List<Transaction> transactions = await transactionService.GetTransactionsByMonthAndYearAsync(chosenMonth, chosenYear);
             transactions = SortTransactions(transactions, sortBy);
+
             string monthName = SetMonthName(chosenMonth);
             var incoming = transactions.Where(t => t.IsDividend);
             var outgoing = transactions.Where(t => !t.IsDividend);
@@ -38,92 +43,87 @@ namespace BlueBloodSystem.Controllers
             return View(data);
         }
 
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+        // GET: Transaction/Create
         public ActionResult Create()
         {
-            var transaction = new Transaction
+            return View(new Transaction
             {
                 Date = DateTime.Today,
                 Value = 20,
                 IsDividend = true
-            };
+            });
+        }
+
+        // POST: Transaction/Create
+        [HttpPost]
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Date,Value,IsDividend")] Transaction transaction)
+        {
+            if (ModelState.IsValid)
+            {
+                transaction.Id = Guid.NewGuid();
+                await transactionService.CreateTransactionAsync(transaction);
+                return RedirectToAction("Index");
+            }
+
             return View(transaction);
         }
 
-        [HttpPost]
-        public ActionResult Create(Transaction transaction)
+        // GET: Transaction/Edit/5
+        public async Task<ActionResult> Edit(Guid? id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return View();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            try
+            Transaction transaction = await transactionService.GetTransactionAsync(id.Value);
+            if (transaction == null)
             {
-                TransactionService.AddTransaction(transaction);
+                return HttpNotFound();
+            }
+            return View(transaction);
+        }
+
+        // POST: Transaction/Edit/5
+        [HttpPost]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Date,Value,IsDividend")] Transaction transaction)
+        {
+            if (ModelState.IsValid)
+            {
+                await transactionService.UpdateTransactionAsync(transaction);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(transaction);
         }
 
-        public ActionResult Edit(Guid id)
+        // GET: Transaction/Delete/5
+        public async Task<ActionResult> Delete(Guid? id)
         {
-            Transaction transation = TransactionService.GetTransactionById(id);
-            return View(transation);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Transaction transaction = await transactionService.GetTransactionAsync(id.Value);
+            if (transaction == null)
+            {
+                return HttpNotFound();
+            }
+            return View(transaction);
         }
 
-        [HttpPost]
-        public ActionResult Edit(Guid id, Transaction transaction)
+        // POST: Transaction/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-
-            try
-            {
-                TransactionService.UpdateTransaction(transaction);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            await transactionService.DeleteTransactionAsync(id);
+            return RedirectToAction("Index");
         }
 
-        public ActionResult Delete(Guid id)
-        {
-            Transaction transation = TransactionService.GetTransactionById(id);
-            return View(transation);
-        }
-
-        [HttpPost]
-        public ActionResult Delete(Guid id, FormCollection collection)
-        {
-            try
-            {
-                TransactionService.DeleteTransaction(id);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        public ActionResult Search(string transactionName)
+        public async Task<ActionResult> Search(string transactionName)
         {
             if (!string.IsNullOrEmpty(transactionName))
             {
-                List<Transaction> transactions = TransactionService.GetTransactions();
-                transactions = transactions.Where(t => t.Name.ToLower().Contains(transactionName.ToLower())).OrderBy(t => t.Date).ToList();
+                List<Transaction> transactions = await transactionService.GetTransactionsByNameAsync(transactionName);
                 var incoming = transactions.Where(t => t.IsDividend);
                 var outgoing = transactions.Where(t => !t.IsDividend);
                 var incomingSum = incoming.Sum(t => t.Value);
@@ -139,7 +139,6 @@ namespace BlueBloodSystem.Controllers
                     Total = totalSum
                 });
             }
-
             return View();
         }
 

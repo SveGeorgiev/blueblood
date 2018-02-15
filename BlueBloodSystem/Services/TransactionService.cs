@@ -1,54 +1,48 @@
 ﻿using BlueBloodSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BlueBloodSystem.Services
 {
     public class TransactionService
     {
-        private string budgetFileName = "budget2018.json";
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-        public JsonConvertService JCS { get; set; }
-
-        public TransactionService()
+        public async Task<List<Transaction>> GetTransactionsByMonthAndYearAsync(int month, int year)
         {
-            JCS = new JsonConvertService();
+            return await db.Transactions.Where(t => t.Date.Month == month && t.Date.Year == year).ToListAsync();
         }
 
-        public List<Transaction> GetTransactions()
+        public async Task<List<Transaction>> GetTransactionsByNameAsync(string name)
         {
-            return JCS.GetAllTransactions(budgetFileName).ToList();
+            return await db.Transactions.Where(t => t.Name.Contains(name)).OrderBy(t => t.Name).ThenBy(t => t.Date).ToListAsync();
         }
 
-        public Transaction GetTransactionById(Guid Id)
+        public async Task CreateTransactionAsync(Transaction transaction)
         {
-            return JCS.GetTransactionById(Id, budgetFileName);
+            db.Transactions.Add(transaction);
+            await db.SaveChangesAsync();
         }
 
-        public void AddTransaction(Transaction transaction)
+        public async Task<Transaction> GetTransactionAsync(Guid id)
         {
-            List<Transaction> transactions = JCS.GetAllTransactions(budgetFileName);
-            transaction.Id = Guid.NewGuid();
-            transactions.Add(transaction);
-            JCS.WriteToFile(budgetFileName, transactions);
+            return await db.Transactions.FindAsync(id);
         }
 
-        public void UpdateTransaction(Transaction item)
+        public async Task UpdateTransactionAsync(Transaction transaction)
         {
-            List<Transaction> transactions = JCS.GetAllTransactions(budgetFileName);
-            Transaction transaction = transactions.FirstOrDefault(t => t.Id == item.Id);
-            transactions.Remove(transaction);
-            transactions.Add(item);
-            JCS.WriteToFile(budgetFileName, transactions);
+            db.Entry(transaction).State = EntityState.Modified;
+            await db.SaveChangesAsync();
         }
 
-        public void DeleteTransaction(Guid Id)
+        public async Task DeleteTransactionAsync(Guid id)
         {
-            List<Transaction> transactions = JCS.GetAllTransactions(budgetFileName);
-            Transaction transaction = transactions.FirstOrDefault(t => t.Id == Id);
-            transactions.Remove(transaction);
-            JCS.WriteToFile(budgetFileName, transactions);
+            Transaction transaction = await this.GetTransactionAsync(id);
+            db.Transactions.Remove(transaction);
+            await db.SaveChangesAsync();
         }
     }
 }

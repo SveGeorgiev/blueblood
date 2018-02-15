@@ -26,8 +26,8 @@
                     @Html.ActionLink("Стойност", "Index", new { sortBy = "Value", year = Model.Year, month = Model.Month })
                 </th>
                 @*<th>
-                    @Html.ActionLink("Приход/Разход", "Index", new { sortBy = "IsDividend", year = Model.Year, month = Model.Month })
-                </th>*@
+                        @Html.ActionLink("Приход/Разход", "Index", new { sortBy = "IsDividend", year = Model.Year, month = Model.Month })
+                    </th>*@
                 <th class="admin"></th>
                 <th class="admin"></th>
             </tr>
@@ -45,8 +45,8 @@
                         @Html.DisplayFor(modelItem => item.Value)лв.
                     </td>
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.IsDividend)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => item.IsDividend)
+                        </td>*@
                     <td class="admin">@Html.ActionLink("Редакция", "Edit", new { id = item.Id })</td>
                     <td class="admin">@Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</td>
                 </tr>
