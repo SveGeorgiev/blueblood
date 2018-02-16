@@ -323,3 +323,5 @@ ASALocalRun/
 *.binlog
 bin
 obj
+/.vs
+PublishProfiles

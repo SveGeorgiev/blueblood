@@ -11,7 +11,7 @@ namespace BlueBloodSystem.Models
         [StringLength(100)]
         public string Name { get; set; }
         [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Дата")]
         [Required(ErrorMessage = "Датата е задължителна.")]
         public DateTime Date { get; set; }
