@@ -3,8 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <title>Синя Кръв Асеновград</title>
-    <link href="~/Content/favicon-32x32.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/favicon-16x16.png">
+    <link rel="manifest" href="~/Content/images/site.webmanifest">
+    <link rel="mask-icon" href="~/Content/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -14,8 +21,9 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        @Html.ActionLink("Синя Кръв Асеновград", "Index", "Transaction", new { area = "" }, new { @class = "navbar-brand" })
-
+        @*@Html.ActionLink("Синя Кръв Асеновград", "Index", "Transaction", new { area = "" }, new { @class = "navbar-brand" })*@
+        @* <label>Синя Кръв Асеновград</label>*@
+        <a class="navbar-brand" href="~/Transaction/Index" style="color: #0275d8;">Синя Кръв Асеновград</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
@@ -41,8 +49,8 @@
                     @Html.ActionLink("Търсачка", "Search", "Transaction", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                        @Html.ActionLink("Анкета", "Index", "Poll", null, new { @class = "nav-link" })
-                    </li>
+                    @Html.ActionLink("Анкета", "Index", "Poll", null, new { @class = "nav-link" })
+                </li>
             </ul>
         </div>
     </nav>

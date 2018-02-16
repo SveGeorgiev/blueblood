@@ -85,10 +85,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/12/2018 07:53:22</publishTime>
     </File>
     <File Include="bin/BlueBloodSystem.dll">
-      <publishTime>02/15/2018 13:20:47</publishTime>
+      <publishTime>02/16/2018 14:36:10</publishTime>
     </File>
     <File Include="bin/BlueBloodSystem.pdb">
-      <publishTime>02/15/2018 13:20:47</publishTime>
+      <publishTime>02/16/2018 14:36:10</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>02/12/2018 07:53:23</publishTime>
@@ -393,11 +393,38 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/favicon-32x32.png">
       <publishTime>02/15/2018 11:16:30</publishTime>
     </File>
+    <File Include="Content/images/android-chrome-192x192.png">
+      <publishTime>02/16/2018 13:40:59</publishTime>
+    </File>
+    <File Include="Content/images/apple-touch-icon.png">
+      <publishTime>02/16/2018 13:40:59</publishTime>
+    </File>
+    <File Include="Content/images/browserconfig.xml">
+      <publishTime>02/16/2018 13:40:59</publishTime>
+    </File>
+    <File Include="Content/images/favicon-16x16.png">
+      <publishTime>02/16/2018 13:40:59</publishTime>
+    </File>
+    <File Include="Content/images/favicon-32x32.png">
+      <publishTime>02/16/2018 13:40:59</publishTime>
+    </File>
+    <File Include="Content/images/favicon.ico">
+      <publishTime>02/16/2018 13:41:00</publishTime>
+    </File>
+    <File Include="Content/images/mstile-150x150.png">
+      <publishTime>02/16/2018 13:41:00</publishTime>
+    </File>
+    <File Include="Content/images/safari-pinned-tab.svg">
+      <publishTime>02/16/2018 13:41:00</publishTime>
+    </File>
+    <File Include="Content/images/site.webmanifest">
+      <publishTime>02/16/2018 13:41:00</publishTime>
+    </File>
     <File Include="Content/logo-100.svg">
       <publishTime>02/09/2018 16:02:39</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>02/12/2018 13:51:59</publishTime>
+      <publishTime>02/16/2018 13:27:09</publishTime>
     </File>
     <File Include="Content/themes/base/accordion.css">
       <publishTime>02/12/2018 07:53:22</publishTime>
@@ -556,7 +583,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 09:02:04</publishTime>
     </File>
     <File Include="Scripts/app/app-key.js">
-      <publishTime>02/12/2018 07:53:22</publishTime>
+      <publishTime>02/16/2018 12:41:30</publishTime>
     </File>
     <File Include="Scripts/app/app.datamodel.js">
       <publishTime>02/07/2018 09:01:42</publishTime>
@@ -826,7 +853,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 09:01:42</publishTime>
     </File>
     <File Include="Views/Poll/Index.cshtml">
-      <publishTime>02/13/2018 14:03:36</publishTime>
+      <publishTime>02/16/2018 14:10:05</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>02/07/2018 09:01:42</publishTime>
@@ -835,7 +862,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/07/2018 09:01:42</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/15/2018 13:19:01</publishTime>
+      <publishTime>02/16/2018 13:46:43</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>02/07/2018 09:01:42</publishTime>
@@ -853,10 +880,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/15/2018 12:45:11</publishTime>
     </File>
     <File Include="Views/Transaction/Index.cshtml">
-      <publishTime>02/15/2018 12:19:15</publishTime>
+      <publishTime>02/16/2018 12:41:08</publishTime>
     </File>
     <File Include="Views/Transaction/Search.cshtml">
-      <publishTime>02/15/2018 12:50:20</publishTime>
+      <publishTime>02/16/2018 13:02:47</publishTime>
     </File>
     <File Include="Views/Transactions/Create.cshtml">
       <publishTime>02/12/2018 07:53:22</publishTime>

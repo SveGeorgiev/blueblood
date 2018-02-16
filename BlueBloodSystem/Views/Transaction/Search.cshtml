@@ -6,7 +6,7 @@
 <h2></h2>
 
 <div id="search-wrapper">
-    @using (Html.BeginForm("Search", "Transactions"))
+    @using (Html.BeginForm("Search", "Transaction"))
     {
         <div class="input-group mb-3">
             <input id="transactionName" name="transactionName" type="text" class="form-control" placeholder="Име" aria-label="Име" aria-describedby="basic-addon2">
@@ -78,6 +78,11 @@
             <strong>Разходи:</strong> <i>@Model.OutgoingSum</i>лв.
         </div>
     }
+
+    @if (Model != null && Model.Incoming.Count() == 0 && Model.Outgoing.Count() == 0)
+    {
+        <div><span class="badge badge-default">Няма намерени данни.</span></div>
+    }
 </div>
 
 <div class="modal fade" id="keyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -98,7 +103,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="sendUserKey()">Ok</button>
+                <button id="modalDialogSubmitButton" type="button" class="btn btn-primary" onclick="sendUserKey()">Ok</button>
             </div>
         </div>
     </div>
