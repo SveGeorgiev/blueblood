@@ -12,6 +12,7 @@
                 $(adminElements[i]).show();
             }
         }
+        $('#wrongPassword').hide();
     }
 
     $('.modal-dialog').on('keypress', function (e) {
@@ -25,10 +26,12 @@
 function sendUserKey() {
     var userKey = $('#userKey').val();
     if (userKey === "8814") {
+        $('#wrongPassword').hide();
         sessionStorage.setItem('isAuthenticated', true);
         $('#transactions-wrapper').show();
         $('#search-wrapper').show();
     } else if (userKey === "240514") {
+        $('#wrongPassword').hide();
         sessionStorage.setItem('isAdmin', true);
         $('#transactions-wrapper').show();
         $('#search-wrapper').show();
@@ -46,6 +49,7 @@ function sendUserKey() {
         for (var i = 0; i < adminElements.length; i++) {
             $(adminElements[i]).hide();
         }
+        $('#wrongPassword').show();
     }
     $('#keyModal').modal('hide');
 }

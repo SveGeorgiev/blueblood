@@ -1,4 +1,4 @@
-﻿@model BlueBloodSystem.Models.TransactonsViewModel
+﻿@model BlueBloodSystem.Models.TransactionsViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -117,9 +117,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Синя Кръв Асеновград</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </button>*@
             </div>
             <div class="modal-body">
                 <form>
@@ -135,5 +135,6 @@
         </div>
     </div>
 </div>
-
+@*<iframe id="iframeLevskiBg" src="https://levski.bg/" scrolling="yes" style="width:100%;height:1000px;border:0;display:none"></iframe>*@
+<div id="wrongPassword" class="alert alert-danger" role="alert" style="display:none;"><strong>Грешна парола!</strong></div>
 <script src="~/Scripts/app/app-key.js"></script>

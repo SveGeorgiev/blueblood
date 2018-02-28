@@ -27,7 +27,7 @@ namespace BlueBloodSystem.Controllers
             var incoming = transactions.Where(t => t.IsDividend);
             var outgoing = transactions.Where(t => !t.IsDividend);
 
-            var data = new TransactonsViewModel
+            var data = new TransactionsViewModel
             {
                 Transactions = transactions,
                 Incoming = incoming,
@@ -130,7 +130,7 @@ namespace BlueBloodSystem.Controllers
                 var outgoingSum = outgoing.Sum(t => t.Value);
                 var totalSum = incomingSum - outgoingSum;
 
-                return View(new TransactonsViewModel
+                return View(new TransactionsViewModel
                 {
                     Incoming = incoming,
                     Outgoing = outgoing,
@@ -140,6 +140,43 @@ namespace BlueBloodSystem.Controllers
                 });
             }
             return View();
+        }
+
+        public async Task<ActionResult> AllMonths(int year)
+        {
+            List<Transaction> transactions = await transactionService.GetTransactionsByYearAsync(year);
+            var transactionsViewModel = new List<TransactionsViewModel>();
+
+            for (int i = 1; i <= 12; i++)
+            {
+                transactionsViewModel = SetTransactionsViewModel(transactionsViewModel, transactions, year, i);
+            }
+
+            return View(new TransactionsAllViewModel
+            {
+                TransactionsViewModel = transactionsViewModel,
+                IncomingSumYear = transactions.Where(t => t.IsDividend).Sum(t => t.Value),
+                OutgoingSumYear = transactions.Where(t => !t.IsDividend).Sum(t => t.Value),
+                TotalSumYear = transactions.Where(t => t.IsDividend).Sum(t => t.Value) - transactions.Where(t => !t.IsDividend).Sum(t => t.Value)
+            });
+        }
+
+        private List<TransactionsViewModel> SetTransactionsViewModel(List<TransactionsViewModel> transactionsViewModel, List<Transaction> transactions, int year, int month)
+        {
+            var transactionsByMotn = transactions.Where(x => x.Date.Month == month);
+            var incomingTransactionsSum = transactionsByMotn.Where(t => t.IsDividend).Sum(t => t.Value);
+            var outgoingTransactionsSum = transactionsByMotn.Where(t => !t.IsDividend).Sum(t => t.Value);
+
+            transactionsViewModel.Add(new TransactionsViewModel
+            {
+                MonthName = SetMonthName(month),
+                Year = year,
+                IncomingSum = incomingTransactionsSum,
+                OutgoingSum = outgoingTransactionsSum,
+                Total = incomingTransactionsSum - outgoingTransactionsSum
+            });
+
+            return transactionsViewModel;
         }
 
         private string SetMonthName(int chosenMonth)

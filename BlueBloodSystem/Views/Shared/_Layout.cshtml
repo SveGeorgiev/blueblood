@@ -43,14 +43,16 @@
                         @Html.ActionLink("Октомври", "Index", "Transaction", new { month = 10, year = 2018 }, new { @class = "dropdown-item" })
                         @Html.ActionLink("Ноември", "Index", "Transaction", new { month = 11, year = 2018 }, new { @class = "dropdown-item" })
                         @Html.ActionLink("Декември", "Index", "Transaction", new { month = 12, year = 2018 }, new { @class = "dropdown-item" })
+                        <hr />
+                        @Html.ActionLink("Всички", "AllMonths", "Transaction", new { year = 2018 }, new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Търсачка", "Search", "Transaction", null, new { @class = "nav-link" })
                 </li>
-                <li class="nav-item">
+                @*<li class="nav-item">
                     @Html.ActionLink("Анкета", "Index", "Poll", null, new { @class = "nav-link" })
-                </li>
+                </li>*@
             </ul>
         </div>
     </nav>

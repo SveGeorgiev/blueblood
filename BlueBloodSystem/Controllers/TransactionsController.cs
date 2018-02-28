@@ -22,7 +22,7 @@ namespace BlueBloodSystem.Controllers
             var incoming = transactions.Where(t => t.IsDividend);
             var outgoing = transactions.Where(t => !t.IsDividend);
 
-            var data = new TransactonsViewModel
+            var data = new TransactionsViewModel
             {
                 Transactions = transactions,
                 Incoming = incoming,
@@ -130,7 +130,7 @@ namespace BlueBloodSystem.Controllers
                 var outgoingSum = outgoing.Sum(t => t.Value);
                 var totalSum = incomingSum - outgoingSum;
 
-                return View(new TransactonsViewModel
+                return View(new TransactionsViewModel
                 {
                     Incoming = incoming,
                     Outgoing = outgoing,

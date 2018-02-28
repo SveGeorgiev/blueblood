@@ -21,6 +21,11 @@ namespace BlueBloodSystem.Services
             return await db.Transactions.Where(t => t.Name.Contains(name)).OrderBy(t => t.Name).ThenBy(t => t.Date).ToListAsync();
         }
 
+        public async Task<List<Transaction>> GetTransactionsByYearAsync(int year)
+        {
+            return await db.Transactions.Where(t => t.Date.Year == year).ToListAsync();
+        }
+
         public async Task CreateTransactionAsync(Transaction transaction)
         {
             db.Transactions.Add(transaction);

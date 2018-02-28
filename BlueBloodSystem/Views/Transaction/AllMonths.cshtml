@@ -1,0 +1,58 @@
+﻿@model BlueBloodSystem.Models.TransactionsAllViewModel
+
+<div id="transactions-wrapper">
+    <h3>@Model.TransactionsViewModel.First().Year</h3>
+    <div class="alert alert-success" role="alert">
+        <strong>Приходи:</strong> <i>@Model.IncomingSumYear</i>лв.
+    </div>
+    <div class="alert alert-danger" role="alert">
+        <strong>Разходи:</strong> <i>@Model.OutgoingSumYear</i>лв.
+    </div>
+    <div class="alert alert-info" role="alert">
+        <strong>Тотал:</strong> <i>@Model.TotalSumYear</i>лв.
+    </div>
+
+    <hr />
+
+    @foreach (var transaction in Model.TransactionsViewModel)
+    {
+        <h3>@transaction.MonthName @transaction.Year</h3>
+        <div class="alert alert-success" role="alert">
+            <strong>Приходи:</strong> <i>@transaction.IncomingSum</i>лв.
+        </div>
+        <div class="alert alert-danger" role="alert">
+            <strong>Разходи:</strong> <i>@transaction.OutgoingSum</i>лв.
+        </div>
+        <div class="alert alert-info" role="alert">
+            <strong>Тотал:</strong> <i>@transaction.Total</i>лв.
+        </div>
+    }
+</div>
+
+<div class="modal fade" id="keyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Синя Кръв Асеновград</h5>
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>*@
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Моля въведете парола:</label>
+                        <input type="password" class="form-control" id="userKey">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="sendUserKey()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<iframe id="iframeLevskiBg" src="https://levski.bg/" scrolling="yes" style="width:100%;height:1000px;border:0;display:none"></iframe>*@
+<div id="wrongPassword" class="alert alert-danger" role="alert" style="display:none;"><strong>Грешна парола!</strong></div>
+<script src="~/Scripts/app/app-key.js"></script>

@@ -2,7 +2,7 @@
 
 namespace BlueBloodSystem.Models
 {
-    public class TransactonsViewModel
+    public class TransactionsViewModel
     {
         public List<Transaction> Transactions { get; set; }
         public IEnumerable<Transaction> Incoming { get; set; }
