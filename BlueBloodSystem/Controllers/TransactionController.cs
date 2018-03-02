@@ -17,8 +17,8 @@ namespace BlueBloodSystem.Controllers
         // GET: Transaction
         public async Task<ActionResult> Index(int? month, int? year, string sortBy)
         {
-            int chosenMonth = month.HasValue ? month.Value : DateTime.Now.Month;
-            int chosenYear = year.HasValue ? year.Value : DateTime.Now.Year;
+            int chosenMonth = month.HasValue ? month.Value : DateTime.Now.AddMonths(-1).Month;
+            int chosenYear = year.HasValue ? year.Value : DateTime.Now.AddMonths(-1).Year;
 
             List<Transaction> transactions = await transactionService.GetTransactionsByMonthAndYearAsync(chosenMonth, chosenYear);
             transactions = SortTransactions(transactions, sortBy);
