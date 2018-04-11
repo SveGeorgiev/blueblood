@@ -38,6 +38,6 @@
     background-image: url("/Content//themes/base/images/ui-icons_cc0000_256x240.png");
 }
 
-a {
+a, footer, .modal-header, label.col-form-label {
     color: #0275d8;
 }

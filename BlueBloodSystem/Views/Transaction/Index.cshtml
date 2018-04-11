@@ -5,10 +5,10 @@
 }
 
 <div id="transactions-wrapper">
-    <h2>@Model.MonthName @Model.Year</h2>
     <p class="admin">
         @Html.ActionLink("Добави", "Create", null, new { @class = "btn btn-primary" })
     </p>
+    <h2>@Model.MonthName @Model.Year</h2>
 
 
     @if (Model != null && Model.Incoming.Count() > 0)
@@ -19,9 +19,9 @@
                 <th>
                     @Html.ActionLink("Име", "Index", new { sortBy = "Name", year = Model.Year, month = Model.Month })
                 </th>
-                <th>
-                    @Html.ActionLink("Дата", "Index", new { sortBy = "Date", year = Model.Year, month = Model.Month })
-                </th>
+                @*<th>
+                        @Html.ActionLink("Дата", "Index", new { sortBy = "Date", year = Model.Year, month = Model.Month })
+                    </th>*@
                 <th>
                     @Html.ActionLink("Стойност", "Index", new { sortBy = "Value", year = Model.Year, month = Model.Month })
                 </th>
@@ -38,9 +38,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Value)лв.
                     </td>
@@ -63,9 +63,9 @@
                 <th>
                     @Html.ActionLink("Име", "Index", new { sortBy = "Name", year = Model.Year, month = Model.Month })
                 </th>
-                <th>
-                    @Html.ActionLink("Дата", "Index", new { sortBy = "Date", year = Model.Year, month = Model.Month })
-                </th>
+                @*<th>
+                        @Html.ActionLink("Дата", "Index", new { sortBy = "Date", year = Model.Year, month = Model.Month })
+                    </th>*@
                 <th>
                     @Html.ActionLink("Стойност", "Index", new { sortBy = "Value", year = Model.Year, month = Model.Month })
                 </th>
@@ -84,9 +84,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Date)
-                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Value)лв.
                         </td>
