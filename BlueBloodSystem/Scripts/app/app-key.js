@@ -25,12 +25,12 @@
 
 function sendUserKey() {
     var userKey = $('#userKey').val();
-    if (userKey === "8814") {
+    if (userKey === "****") {
         $('#wrongPassword').hide();
         sessionStorage.setItem('isAuthenticated', true);
         $('#transactions-wrapper').show();
         $('#search-wrapper').show();
-    } else if (userKey === "240514") {
+    } else if (userKey === "****") {
         $('#wrongPassword').hide();
         sessionStorage.setItem('isAdmin', true);
         $('#transactions-wrapper').show();
