@@ -1,4 +1,4 @@
-﻿#transactions-wrapper, #search-wrapper, .admin {
+﻿#content-wrapper, #search-wrapper, .admin {
     display: none;
 }
 
@@ -38,6 +38,6 @@
     background-image: url("/Content//themes/base/images/ui-icons_cc0000_256x240.png");
 }
 
-a, footer, .modal-header, label.col-form-label {
+a, footer, .modal-header, label.col-form-label, .blueblood {
     color: #0275d8;
 }

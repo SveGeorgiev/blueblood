@@ -240,6 +240,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\PollController.cs" />
+    <Compile Include="Controllers\SoccerController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -249,6 +250,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Score.cs" />
+    <Compile Include="Models\Soccer.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -280,6 +283,7 @@
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\mstile-150x150.png" />
     <Content Include="Content\images\safari-pinned-tab.svg" />
+    <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -383,6 +387,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\knockout-3.4.2.debug.js" />
     <Content Include="Scripts\knockout-3.4.2.js" />
     <Content Include="Scripts\knockout.validation.js" />
@@ -469,6 +474,10 @@
     <Content Include="Views\Transaction\Index.cshtml" />
     <Content Include="Views\Transaction\Search.cshtml" />
     <Content Include="Views\Transaction\AllMonths.cshtml" />
+    <Content Include="Views\Soccer\Create.cshtml" />
+    <Content Include="Views\Soccer\Delete.cshtml" />
+    <Content Include="Views\Soccer\Edit.cshtml" />
+    <Content Include="Views\Soccer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

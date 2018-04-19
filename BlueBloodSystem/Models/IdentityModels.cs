@@ -33,5 +33,7 @@ namespace BlueBloodSystem.Models
         }
 
         public System.Data.Entity.DbSet<BlueBloodSystem.Models.Transaction> Transactions { get; set; }
+
+        public System.Data.Entity.DbSet<BlueBloodSystem.Models.Soccer> Soccers { get; set; }
     }
 }

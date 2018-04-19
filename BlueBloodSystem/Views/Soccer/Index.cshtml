@@ -1,0 +1,82 @@
+﻿@model IEnumerable<BlueBloodSystem.Models.Soccer>
+
+@using BlueBloodSystem.Models
+
+@{
+    ViewBag.Title = "Футбол";
+}
+
+<div id="content-wrapper">
+    <p class="admin">
+        @Html.ActionLink("Добави", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <ul class="list-group">
+
+        @foreach (var item in Model)
+        {
+            if (item.Score == Score.Win)
+            {
+                <li class="list-group-item list-group-item-primary">
+                    <div>@item.Date.ToString("hh.MM.yyyy")</div>
+                    <div>@item.Opponents</div>
+                    <div>@item.Result</div>
+                    <div> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
+                </li>
+            }
+            else if (item.Score == Score.Draw)
+            {
+                <li class="list-group-item list-group-item-warning">
+                    <div>@item.Date.ToString("hh.MM.yyyy")</div>
+                    <div>@item.Opponents</div>
+                    <div>@item.Result</div>
+                    <div> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
+                </li>
+            }
+            else if (item.Score == Score.Lose)
+            {
+                <li class="list-group-item list-group-item-danger">
+                    <div>@item.Date.ToString("hh.MM.yyyy")</div>
+                    <div>@item.Opponents</div>
+                    <div>@item.Result</div>
+                    <div> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
+                </li>
+            }
+            else
+            {
+                <li class="list-group-item list-group-item-action">
+                    <div>@item.Date.ToString("hh.MM.yyyy")</div>
+                    <div>@item.Opponents</div>
+                    <div>@item.Result</div>
+                    <div> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
+                </li>
+            }
+        }
+    </ul>
+</div>
+
+<div class="modal fade" id="keyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Синя Кръв Асеновград</h5>
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>*@
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Моля въведете парола:</label>
+                        <input type="password" class="form-control" id="userKey">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="modalDialogSubmitButton" type="button" class="btn btn-primary" onclick="sendUserKey()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wrongPassword" class="alert alert-danger" role="alert" style="display:none;"><strong>Грешна парола!</strong></div>
+<script src="~/Scripts/app/app-key.js"></script>
