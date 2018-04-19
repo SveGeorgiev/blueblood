@@ -21,7 +21,7 @@
                     <div>@item.Date.ToString("hh.MM.yyyy")</div>
                     <div>@item.Opponents</div>
                     <div>@item.Result</div>
-                    <div> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
+                    <div class="admin"> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
                 </li>
             }
             else if (item.Score == Score.Draw)
@@ -30,7 +30,7 @@
                     <div>@item.Date.ToString("hh.MM.yyyy")</div>
                     <div>@item.Opponents</div>
                     <div>@item.Result</div>
-                    <div> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
+                    <div class="admin"> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
                 </li>
             }
             else if (item.Score == Score.Lose)
@@ -39,7 +39,7 @@
                     <div>@item.Date.ToString("hh.MM.yyyy")</div>
                     <div>@item.Opponents</div>
                     <div>@item.Result</div>
-                    <div> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
+                    <div class="admin">@Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
                 </li>
             }
             else
@@ -48,7 +48,7 @@
                     <div>@item.Date.ToString("hh.MM.yyyy")</div>
                     <div>@item.Opponents</div>
                     <div>@item.Result</div>
-                    <div> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
+                    <div class="admin"> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
                 </li>
             }
         }
