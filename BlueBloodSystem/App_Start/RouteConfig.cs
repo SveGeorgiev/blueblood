@@ -12,7 +12,7 @@ namespace BlueBloodSystem
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Transaction", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Soccer", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

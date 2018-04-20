@@ -17,7 +17,6 @@ namespace BlueBloodSystem.Models
         [DataType(DataType.DateTime)]
         [Display(Name = "Дата")]
         public DateTime Date { get; set; }
-        [Required(ErrorMessage = "Полето е задължително.")]
         public Score? Score { get; set; }
     }
 }

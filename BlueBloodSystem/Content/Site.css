@@ -41,3 +41,7 @@
 a, footer, .modal-header, label.col-form-label, .blueblood {
     color: #0275d8;
 }
+
+.margin-10-10 {
+    margin: 10px 10px;
+}

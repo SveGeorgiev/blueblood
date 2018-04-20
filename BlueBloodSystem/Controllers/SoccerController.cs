@@ -18,7 +18,8 @@ namespace BlueBloodSystem.Controllers
         // GET: Soccers
         public async Task<ActionResult> Index()
         {
-            return View(await db.Soccers.OrderByDescending(s => s.Date).ToListAsync());
+            List<Soccer> soccerList = await db.Soccers.OrderByDescending(s => s.Date).ToListAsync();
+            return View(new SoccerViewModel(soccerList));
         }
 
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BlueBloodSystem.Models.Soccer>
+﻿@model BlueBloodSystem.Models.SoccerViewModel
 
 @using BlueBloodSystem.Models
 
@@ -13,12 +13,12 @@
 
     <ul class="list-group">
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.SoccerList)
         {
             if (item.Score == Score.Win)
             {
                 <li class="list-group-item list-group-item-primary">
-                    <div>@item.Date.ToString("hh.MM.yyyy")</div>
+                    <div>@item.Date.ToString("dd.MM.yyyy HH:mm")</div>
                     <div>@item.Opponents</div>
                     <div>@item.Result</div>
                     <div class="admin"> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
@@ -27,7 +27,7 @@
             else if (item.Score == Score.Draw)
             {
                 <li class="list-group-item list-group-item-warning">
-                    <div>@item.Date.ToString("hh.MM.yyyy")</div>
+                    <div>@item.Date.ToString("dd.MM.yyyy HH:mm")</div>
                     <div>@item.Opponents</div>
                     <div>@item.Result</div>
                     <div class="admin"> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
@@ -36,7 +36,7 @@
             else if (item.Score == Score.Lose)
             {
                 <li class="list-group-item list-group-item-danger">
-                    <div>@item.Date.ToString("hh.MM.yyyy")</div>
+                    <div>@item.Date.ToString("dd.MM.yyyy HH:mm")</div>
                     <div>@item.Opponents</div>
                     <div>@item.Result</div>
                     <div class="admin">@Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
@@ -45,7 +45,7 @@
             else
             {
                 <li class="list-group-item list-group-item-action">
-                    <div>@item.Date.ToString("hh.MM.yyyy")</div>
+                    <div>@item.Date.ToString("dd.MM.yyyy HH:mm")</div>
                     <div>@item.Opponents</div>
                     <div>@item.Result</div>
                     <div class="admin"> @Html.ActionLink("Редакция", "Edit", new { id = item.Id }) @Html.ActionLink("Изтриване", "Delete", new { id = item.Id })</div>
@@ -53,6 +53,8 @@
             }
         }
     </ul>
+    <hr />
+    <button type="button" class="btn btn-primary margin-10-10">@Model.WinsCount Победи</button><button type="button" class="btn btn-warning margin-10-10">@Model.DrawsCount Равенства</button><button type="button" class="btn btn-danger margin-10-10">@Model.LostCount Загуби</button>
 </div>
 
 <div class="modal fade" id="keyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
